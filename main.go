@@ -77,6 +77,11 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// gaslimit, err := client.SuggestGasTipCap(context.Background())
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+
 	v, err := hexutil.DecodeBig("0x1b")
 	if err != nil {
 		log.Fatal(err)
@@ -93,7 +98,7 @@ func main() {
 
 	data := []byte("This a data that is extremely useless. Really, really useless.")
 
-	////new transaction between accounts
+	//new transaction between accounts
 	txData := types.TxData(&types.LegacyTx{
 		Nonce:    nonce,
 		GasPrice: gasPrice,
@@ -130,6 +135,11 @@ func main() {
 
 	fmt.Println("tx sent: ", txSgined.Hash().Hex())
 	time.Sleep(20 * time.Second)
+	receipt, err := client.TransactionReceipt(context.Background(), txSgined.Hash())
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("tx receipt:", receipt)
 
 	balance1, err = client.BalanceAt(context.Background(), add1, nil)
 	if err != nil {
