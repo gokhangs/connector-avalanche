@@ -102,7 +102,7 @@ func main() {
 	txData := types.TxData(&types.LegacyTx{
 		Nonce:    nonce,
 		GasPrice: gasPrice,
-		Gas:      21992,
+		Gas:      25000,
 		To:       &add2,
 		Value:    big.NewInt(1),
 		Data:     data,
