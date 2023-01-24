@@ -1,2 +1,2 @@
 # connector-avalanche
-avalance connection
+Avalance connection
